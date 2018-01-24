@@ -2,7 +2,7 @@
 
 <div>
 	<% current_user.cats.each do |cat| %>
-		<p><%= cat.name %></p> 
+		<p><%= link_to(cat.name, cat_path(cat.id)) %></p> 
 	<% end %>
 </div>
 
