@@ -1,0 +1,14 @@
+<div>
+	<h2><%= current_user.email %></h2>
+</div>
+<div>
+	<%= form_for :user, url: user_registration_path, method: 'put' do |f| %>
+  <p>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</div>
