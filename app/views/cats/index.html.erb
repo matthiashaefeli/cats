@@ -1,0 +1,9 @@
+<h1>cats</h1>
+
+<div>
+	<% current_user.cats.each do |cat| %>
+		<p><%= cat.name %></p> 
+	<% end %>
+</div>
+
+<button><%= link_to("Add Cat", new_cat_path) %></button>
