@@ -2,13 +2,119 @@
 	<h2><%= current_user.email %></h2>
 </div>
 <div>
-	<%= form_for :user, url: user_registration_path, method: 'put' do |f| %>
-  <p>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+	<% if current_user.first_name %>
+		<p>First Name: <%= current_user.first_name %></p>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>
+				<%= f.label :first_name %>
+			  <%= f.text_field :first_name %>
+			 </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
+	<% if current_user.last_name %>
+		<p>Last Name: <%= current_user.last_name %></p>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>
+				<%= f.label :last_name %>
+			  <%= f.text_field :last_name %>
+			 </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
+	<% if current_user.street %>
+		<p>Street: <%= current_user.street %></p>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>
+				<%= f.label :street %>
+			  <%= f.text_field :street %>
+			 </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
+	<% if current_user.city %>
+		<p>City: <%= current_user.city %></p>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>
+				<%= f.label :city %>
+			  <%= f.text_field :city %>
+			 </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
+	<% if current_user.zip_code %>
+		<p>Zip Code: <%= current_user.zip_code %></p>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>
+				<%= f.label :zip_code %>
+			  <%= f.text_field :zip_code %>
+			 </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
+	<% if current_user.state %>
+		<p>State: <%= current_user.state %></p>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>
+				<%= f.label :state %>
+			  <%= f.text_field :state %>
+			 </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
+	<% if current_user.tel %>
+		<p>Tel: <%= current_user.tel %></p>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>
+				<%= f.label :tel %>
+			  <%= f.text_field :tel %>
+			 </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
+	<% if current_user.mobile %>
+		<p>Mobile: <%= current_user.mobile %></p>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>
+				<%= f.label :mobile %>
+			  <%= f.text_field :mobile %>
+			 </p>
+		  <p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
+
+
+
+
+
+
+
+
+
+
+
 </div>
