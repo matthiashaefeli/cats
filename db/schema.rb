@@ -42,10 +42,11 @@ ActiveRecord::Schema.define(version: 20180124173346) do
     t.string "last_name"
     t.string "street"
     t.string "city"
-    t.integer "zip_code"
+    t.bigint "zip_code"
     t.string "state"
-    t.integer "tel"
-    t.integer "mobile"
+    t.bigint "tel"
+    t.bigint "mobile"
+    t.boolean "getcat"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

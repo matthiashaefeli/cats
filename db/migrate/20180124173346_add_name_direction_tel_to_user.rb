@@ -8,5 +8,6 @@ class AddNameDirectionTelToUser < ActiveRecord::Migration[5.1]
   	add_column :users, :state, :string
   	add_column :users, :tel, :integer, limit: 8
   	add_column :users, :mobile, :integer, limit: 8
+  	add_column :users, :getcat, :boolean
   end
 end

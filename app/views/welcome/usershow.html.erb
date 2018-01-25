@@ -107,14 +107,27 @@
 		<% end %>
 	<% end %>
 
-
-
-
-
-
-
-
-
-
-
+	<% if current_user.getcat %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>I can get a Cat</p>
+			<p>
+				<%= f.check_box(:getcat) %>
+				<%= f.label(:getcat, "Change to 'I can't get a Cat'") %>
+			</p>
+			<p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% else %>
+		<%= form_for :user, url: userupdate_path do |f| %>
+			<p>I can't get a Cat</p>
+			<p>
+				<%= f.check_box(:getcat) %>
+				<%= f.label(:getcat, "Change to 'I can get a Cat'") %>
+			</p>
+			<p>
+		    <%= f.submit "Save" %>
+		  </p>
+		<% end %>
+	<% end %>
 </div>
