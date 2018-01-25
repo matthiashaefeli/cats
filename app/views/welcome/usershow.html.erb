@@ -111,22 +111,20 @@
 		<%= form_for :user, url: userupdate_path do |f| %>
 			<p>I can get a Cat</p>
 			<p>
-				<%= f.check_box(:getcat) %>
-				<%= f.label(:getcat, "Change to 'I can't get a Cat'") %>
+				<%= f.hidden_field :getcat, value: 0 %>
 			</p>
 			<p>
-		    <%= f.submit "Save" %>
+		    <%= f.submit "Change to 'I can't get a Cat'" %>
 		  </p>
 		<% end %>
 	<% else %>
 		<%= form_for :user, url: userupdate_path do |f| %>
 			<p>I can't get a Cat</p>
 			<p>
-				<%= f.check_box(:getcat) %>
-				<%= f.label(:getcat, "Change to 'I can get a Cat'") %>
+				<%= f.hidden_field :getcat, value: 1 %>
 			</p>
 			<p>
-		    <%= f.submit "Save" %>
+		    <%= f.submit "Change to 'I can get a Cat'" %>
 		  </p>
 		<% end %>
 	<% end %>
