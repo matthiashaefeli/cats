@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :map
 
+  get '/getcatyes/:id', to: 'welcome#getcatyes', as: 'getcatyes'
 	get '/user/:id', to: 'welcome#usershow', as: 'usershow'
 	post '/userupdate/:id', to: 'welcome#userupdate', as: 'userupdate'
 	root "welcome#index"

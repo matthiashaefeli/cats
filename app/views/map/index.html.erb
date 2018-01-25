@@ -24,12 +24,16 @@
 	  });
 		var userMarkers = <%= raw user_array.to_json %>
 			for (var index = 0; index < userMarkers.length; index++) {
-	  		var markerName = {lat: userMarkers[index][0], lng: userMarkers[index][1]};
+	  		var markerDirection = {lat: userMarkers[index][0], lng: userMarkers[index][1]};
 	  	  var marker = new google.maps.Marker({
-	      position: markerName,
+	      position: markerDirection,
 	      map: map,
-	      label: userMarkers[index][2]
-       });
+	      label: userMarkers[index][2],
+	      id: '/getcatyes/'+userMarkers[index][3]
+       })
+	  	 google.maps.event.addListener(marker, 'click', function() {
+        window.location.href = this.id;
+    });
 		}
   }
 </script>
