@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
 	end
 
 	def userupdate
+
 		if params[:user][:first_name]
 			current_user.update(first_name: params[:user][:first_name])
 		elsif
@@ -27,6 +28,11 @@ class WelcomeController < ApplicationController
 		elsif
 			params[:user][:mobile]
 			current_user.update(mobile: params[:user][:mobile])
+		elsif 
+			params[:user][:getcat]
+			current_user.update(getcat: params[:user][:getcat])
+
+
 		end
 		redirect_to usershow_path
 	end
