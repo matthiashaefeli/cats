@@ -37,5 +37,9 @@ class WelcomeController < ApplicationController
 		redirect_to usershow_path
 	end
 
+	def getcatyes
+		@getcatuser = User.find(params[:id])
+	end
+
 
 end

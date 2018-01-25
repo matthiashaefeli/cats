@@ -1,0 +1,13 @@
+<div>
+	<h1>Messages</h1>
+</div>
+<div>
+	<%= link_to("Create new Message", new_message_path) %>
+</div>
+<div>
+	<% @messages.each do |message| %>
+		<p><%= message.user.email %></p>
+		<p><%= message.text %></p> 
+	<% end %>
+</div>
+
