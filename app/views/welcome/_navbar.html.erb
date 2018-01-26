@@ -4,6 +4,7 @@
 	<button><%= link_to("Messages", messages_path) %></button>
 	<button><%= link_to("Map", map_index_path) %> </button>
 	<button><%= link_to("Home", root_path) %></button>
+	<button><%= link_to("Event", events_path) %></button>
 	<% if !current_user.first_name || current_user.first_name == "" %>
 		<button><%= link_to(current_user.email, usershow_path(current_user.id)) %></button> 
 	<% else %>
