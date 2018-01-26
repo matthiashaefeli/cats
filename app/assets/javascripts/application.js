@@ -10,6 +10,29 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+
+//= require jquery
+//= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener('turbolinks:load', function() {
+	$('.getcats').on('click', function(event) {
+		event.preventDefault();
+		var $userEmail = $(this)
+			.parent()
+			.siblings('.getuser')
+			.children()[0].value;
+
+		$.ajax({
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+			},
+			type: 'get',
+			url: '/events/new',
+			data: $userEmail
+		}).done(function(response) {
+			debugger;
+		});
+	});
+});

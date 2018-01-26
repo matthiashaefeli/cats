@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :cats
   resources :messages
   resources :map
+  resources :events
+
 
   get '/getcatyes/:id', to: 'welcome#getcatyes', as: 'getcatyes'
 	get '/user/:id', to: 'welcome#usershow', as: 'usershow'

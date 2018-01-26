@@ -1,0 +1,2 @@
+class CatvotesController < ApplicationController
+end

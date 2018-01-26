@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125123211) do
+ActiveRecord::Schema.define(version: 20180126120912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,25 @@ ActiveRecord::Schema.define(version: 20180125123211) do
     t.string "breed"
     t.string "comment"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "catvotes", force: :cascade do |t|
+    t.integer "cat_id"
+    t.integer "user_id"
+    t.boolean "goodcat"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "care_user_id"
+    t.integer "cat_id"
+    t.date "start"
+    t.date "end"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180125123211) do
     t.boolean "getcat"
     t.float "latitude"
     t.float "longitude"
+    t.integer "user_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
