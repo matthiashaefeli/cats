@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :map
   resources :events
 
+
   get '/getcatyes/:id', to: 'welcome#getcatyes', as: 'getcatyes'
 	get '/user/:id', to: 'welcome#usershow', as: 'usershow'
 	post '/userupdate/:id', to: 'welcome#userupdate', as: 'userupdate'
