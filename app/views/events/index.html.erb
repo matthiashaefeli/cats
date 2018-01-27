@@ -2,7 +2,70 @@
 	<button><%= link_to("Create new Event", new_event_path) %></button>
 </div>
 <div>
+	<h1>you bring your cat</h1>
 	<% current_user.events.each do |event| %>
-		<%= event.cat.name %>
+		<% careuser = User.find(event.care_user_id) %>
+		<p>You bring your cat to: <%= careuser.email %>, <%= careuser.first_name %>.<%= careuser.last_name %></p>
+		<p>Cats Name: <%= event.cat.name %></p>
+		<p>Start Date: <%= event.start %></p>
+		<p>End Date: <%= event.end %></p>
+		<% if event.price %>
+			<p>Cost: <%= event.price %>$</p>
+		<% end %>
+		<% if event.confirm_two %>
+			<p>everyting set up</p>
+		<% elsif event.confirm_one %>
+				<div>
+				  <%= form_for :event, url: event_path(event.id), method: "put" do |f| %>
+				    <p>
+				      <%= f.hidden_field :Confirm_request_two %>
+				    </p>
+				    <p>
+				      <%= f.submit "Confirm Event" %>
+				    </p>
+				  <% end %>
+				</div>
+		<% else %>
+			<p>Wait for confirm from user who will take care of the Cat</p>
+		<% end %>
+		<p><%= link_to('Delete Event', event_path(event.id), method: 'delete') %></p> 
+			<hr>
 	<% end %>
+</div>
+<div>
+	<h1>you recive a cat</h1>
+	<% @events.each do |ev| %>
+		<% if ev.care_user_id == current_user.id %>
+			<p>Cat from: <%= ev.user.email %></p>
+			<p>Cats Name: <%= ev.cat.name %></p> 
+			<p>Start Date: <%= ev.start %></p>
+			<p>End Date: <%= ev.end %></p>
+			<% if ev.confirm_one %>
+				<p>You confirmed the request</p>
+				<% if ev.confirm_two %>
+					<p>Everything set up</p>
+				<% else %>
+					<p>Wait to confirm Customer</p>
+				<% end %>
+			<% else %>
+				<div>
+				  <%= form_for :event, url: event_path(ev.id), method: "put" do |f| %>
+				    <p>
+				      <%= f.hidden_field :Confirm_request_one %>
+				    </p>
+						<p>
+				      <%= f.label :price %>
+				      <%= f.number_field :price %>
+				    </p>
+				    <p>
+				      <%= f.submit "Confirm Event" %>
+				    </p>
+				  <% end %>
+				</div>
+			<% end %>
+					<p><%= link_to('Delete Event', event_path(ev.id), method: 'delete') %></p>  
+					<hr>
+		<% end %>
+	<% end %>
+
 </div>
