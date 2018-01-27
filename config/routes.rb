@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :map
   resources :events
+  resources :catvotes
 
 
   get '/getcatyes/:id', to: 'welcome#getcatyes', as: 'getcatyes'

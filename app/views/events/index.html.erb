@@ -44,6 +44,29 @@
 				<p>You confirmed the request</p>
 				<% if ev.confirm_two %>
 					<p>Everything set up</p>
+					<p>Vote for the Cat</p>
+						<%= form_for :catvotes, url: catvotes_path do |f| %>
+						  <p>
+								<%= f.hidden_field :cat_id, value: ev.cat.id %>
+						  </p>
+						  <p>
+						    <%= f.label :text %>
+						    <%= f.text_field :text %>
+						  </p>
+						  <p>
+						    <%= f.label :goodcat %>
+						    <%= f.check_box :goodcat %>
+						  </p>
+						  <p>
+						    <%= f.submit %>
+						  </p>
+						<% end %>
+
+
+
+
+
+
 				<% else %>
 					<p>Wait to confirm Customer</p>
 				<% end %>
