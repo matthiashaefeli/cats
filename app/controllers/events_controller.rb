@@ -4,19 +4,13 @@ class EventsController < ApplicationController
 	end
 
 	def new
-		if request.xhr?
+	end
 
-			user = User.find_by(email: params.keys[0])
-			cats = []
-			user.cats.each do |cat|
-
-				cats.push(cat.name)
-			end
-				respond_to do |format|
-				format.json { render json:cats }
-			end
-
-		end
+	def create
+		user = User.find_by(email: params[:event][:care_user_id])
+		cattogive = Cat.find_by(name: params[:event][:cat_id])
+		event = Event.create(care_user_id: user.id, cat_id: cattogive.id, start: params[:event][:start], end: params[:event][:end], user_id: current_user.id)
+		redirect_to events_path
 	end
 
 end
