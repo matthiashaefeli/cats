@@ -16,29 +16,4 @@
 //= require turbolinks
 //= require_tree .
 
-document.addEventListener('turbolinks:load', function() {
-	$('.getcats').on('click', function(event) {
-		event.preventDefault();
-		var $test = $(this)
-			.parent()
-			.siblings('.getuser');
-		var $userEmail = $(this)
-			.parent()
-			.siblings('.getuser')
-			.children()[0].value;
 
-		$.ajax({
-			beforeSend: function(xhr) {
-				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-			},
-			type: 'get',
-			url: '/events/new',
-			data: $userEmail
-		}).done(function(response) {
-			response.forEach(function(cat) {
-				$('.getcats').remove();
-				$test.append('<p><input type="checkbox" name="cat" value="catname"><label>' + cat + '</label></p>');
-			});
-		});
-	});
-});
