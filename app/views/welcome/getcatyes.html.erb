@@ -1,18 +1,7 @@
 <div>
 	<div>
-		<%= form_for :message, url: messages_path, method: 'post' do |f| %>
-			<p> 
-				Send Message		
-			</p>
-			<%= f.hidden_field :to_id, value: @getcatuser.email %>
-			<p>
-				<%= f.label :text %>
-				<%= f.text_area :text, size: "30x10" %>
-			</p>
-			<p>
-		    <%= f.submit "Send Message" %>
-		  </p>
-		<% end %>
+		<p><%= link_to("Send Message to User", new_message_path(@getcatuser), method: "get") %></p>
+		<p><%= link_to("Start Event with User", new_event_path(@getcatuser), method: "get") %></p>
 	</div>
 	<div>
 		<p>First Name: <%= @getcatuser.first_name %></p>

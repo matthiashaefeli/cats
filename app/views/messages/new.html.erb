@@ -1,8 +1,16 @@
 <div>
 	<%= form_for :message, url: messages_path, method: 'post' do |f| %>
-		<p> 
-			Message to: <%= f.select :to_id, allusers %>		
-		</p>
+
+			<% if @user %>
+			<p>
+				Message to: <%= @user.email %>
+				<%= f.hidden_field :to_id, value: @user.email %>
+			</p>
+			<% else %>
+				<p>
+					Message to: <%= f.select :to_id, allusers %>		
+				</p>
+			<% end %>
 		<p>
 			<%= f.label :text %>
 			<%= f.text_area :text, size: "30x10" %>

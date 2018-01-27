@@ -1,9 +1,16 @@
 
 <div class="help">
   <%= form_for :event, url: events_path do |f| %>
-    <p> 
-      User to take care of the Cat: <%= f.select :care_user_id, catcareuser %>    
-    </p>
+    <% if @user %>
+      <p>
+        User to take care of the Cat: <%= @user.email %>
+        <%= f.hidden_field :care_user_id, value: @user.email %>
+      </p>
+    <% else %>
+      <p> 
+        User to take care of the Cat: <%= f.select :care_user_id, catcareuser %>    
+      </p>
+    <% end %>
     <p> 
       Cat: <%= f.select :cat_id, cats %>    
     </p> 
