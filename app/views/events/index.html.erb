@@ -44,7 +44,6 @@
 				<p>You confirmed the request</p>
 				<% if ev.confirm_two %>
 					<p>Everything set up</p>
-					
 						<% if ev.catvote %>
 							<p>You voted the cats behavior was: <% if ev.catvote.goodcat %> Good <% else %> Bad <% end %></p>
 							<p>You wrote about the Cat: <%= ev.catvote.text %></p>
@@ -68,12 +67,6 @@
 							  </p>
 							<% end %>
 						<% end %>
-
-
-
-
-
-
 				<% else %>
 					<p>Wait to confirm Customer</p>
 				<% end %>
