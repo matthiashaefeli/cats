@@ -19,6 +19,9 @@
 document.addEventListener('turbolinks:load', function() {
 	$('.getcats').on('click', function(event) {
 		event.preventDefault();
+		var $test = $(this)
+			.parent()
+			.siblings('.getuser');
 		var $userEmail = $(this)
 			.parent()
 			.siblings('.getuser')
@@ -32,7 +35,10 @@ document.addEventListener('turbolinks:load', function() {
 			url: '/events/new',
 			data: $userEmail
 		}).done(function(response) {
-			debugger;
+			response.forEach(function(cat) {
+				$('.getcats').remove();
+				$test.append('<p><input type="checkbox" name="cat" value="catname"><label>' + cat + '</label></p>');
+			});
 		});
 	});
 });
