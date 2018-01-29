@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :cats
   has_many :events
+  has_many :uservotes
 
   validates_uniqueness_of :email
 

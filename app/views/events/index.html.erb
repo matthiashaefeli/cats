@@ -14,6 +14,27 @@
 		<% end %>
 		<% if event.confirm_two %>
 			<p>everyting set up</p>
+			<% if !event.uservote %>
+				<p>Vote for the User</p>
+				<%= form_for :uservotes, url: uservotes_path do |f| %>
+				  <p>
+						<%= f.hidden_field :user_id, value: event.care_user_id %>
+						<%= f.hidden_field :event_id, value: event.id %>
+				  </p>
+				  <p>
+				    <%= f.label :text %>
+				    <%= f.text_area :text, size: "30x10" %>
+				  </p>
+				  <p>
+				    <%= f.label :good_place %>
+				    <%= f.check_box :goodevent %>
+				  </p>
+				  <p>
+				    <%= f.submit %>
+				  </p>
+				<% end %>
+			<% end %>
+
 		<% elsif event.confirm_one %>
 				<div>
 				  <%= form_for :event, url: event_path(event.id), method: "put" do |f| %>
