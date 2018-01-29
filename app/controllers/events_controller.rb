@@ -5,7 +5,9 @@ class EventsController < ApplicationController
 	end
 
 	def new
-		@user = User.find(params[:format])
+		if params[:format]
+			@user = User.find(params[:format])
+		end
 	end
 
 	def create
