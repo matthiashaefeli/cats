@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :map
   resources :events
   resources :catvotes
+  resources :uservotes
 
   get '/infouser/:id', to: 'welcome#infouser', as: 'infouser'
   get '/getcatyes/:id', to: 'welcome#getcatyes', as: 'getcatyes'
