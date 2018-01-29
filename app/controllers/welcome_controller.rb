@@ -41,5 +41,9 @@ class WelcomeController < ApplicationController
 		@getcatuser = User.find(params[:id])
 	end
 
+	def infouser
+		@infouser = User.find(params[:id])
+	end
+
 
 end

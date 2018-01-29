@@ -4,10 +4,13 @@
 <div>
 	<%= link_to("Create new Message", new_message_path) %>
 </div>
+<hr>
 <div>
 	<% @messages.each do |message| %>
-		<p><%= message.user.email %></p>
-		<p><%= message.text %></p> 
+		<p>From: <%= link_to(message.user.email, infouser_path(message.user.id)) %></p>
+		<p>Message: <%= message.text %></p>
+		<p><%= link_to('Delete Message', message_path(message.id), method: 'delete') %></p>
+		<hr>
 	<% end %>
 </div>
 
