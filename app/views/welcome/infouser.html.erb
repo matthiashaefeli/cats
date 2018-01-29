@@ -1,0 +1,31 @@
+<div>
+	<h1>User Info</h1>
+	<div>
+		<p><%= link_to("Send Message to User", new_message_path(@infouser), method: "get") %></p>
+		<p><%= link_to("Start Event with User", new_event_path(@infouser), method: "get") %></p>
+	</div>
+	<p>Email: <%= @infouser.email %></p>
+	<p>First Name: <%= @infouser.first_name %></p>
+	<p>Last Name: <%= @infouser.last_name %></p>
+	<p>Street: <%= @infouser.street %></p>
+	<p>Zip Code: <%= @infouser.zip_code %></p>
+	<p>State: <%= @infouser.state %></p>
+	<p>Tel: <%= @infouser.tel %></p>
+	<p>Moile: <%= @infouser.mobile %></p>
+	<hr>
+	<h3>Cats</h3>
+	<% @infouser.cats.each do |cat| %>
+		<p>Name: <%= cat.name %></p>
+		<p>Breed: <%= cat.breed %></p>
+		<p>Age: <%= cat.age %></p>
+		<p>Comment: <%= cat.comment %></p>
+		<div>
+		<h3>All comments about <%= cat.name %></h3>
+		<p>The Cat has <%= cat.catvotes.where(goodcat: false).count %> bad and <%= cat.catvotes.where(goodcat: true).count %> good behavior</p> 
+		<% cat.catvotes.each do |catvote| %>
+			<p>Comment from <%= catvote.user.email %>, <%= catvote.user.first_name %>, <%= catvote.user.last_name %>: <%= catvote.text %></p>
+		<% end %>
+	</div>
+		<hr>
+	<% end %> 
+</div>

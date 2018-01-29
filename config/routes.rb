@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :events
   resources :catvotes
 
-
+  get '/infouser/:id', to: 'welcome#infouser', as: 'infouser'
   get '/getcatyes/:id', to: 'welcome#getcatyes', as: 'getcatyes'
 	get '/user/:id', to: 'welcome#usershow', as: 'usershow'
 	post '/userupdate/:id', to: 'welcome#userupdate', as: 'userupdate'
