@@ -19,7 +19,7 @@ class CatsController < ApplicationController
 
 	def update
 		cat = Cat.find(params[:id])
-		cat.update(name: params[:cat][:name], breed: params[:cat][:breed], age: params[:cat][:age], comment: params[:cat][:comment]) 
+		cat.update(avatar: params[:cat][:image], name: params[:cat][:name], breed: params[:cat][:breed], age: params[:cat][:age], comment: params[:cat][:comment]) 
 		redirect_to cats_path
 	end
 
