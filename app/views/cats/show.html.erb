@@ -1,5 +1,8 @@
 <div>
-	<h1>Cat's Name: <%= @cat.name %></h1>
+	<% if @cat.avatar_url %>
+		<p><%= image_tag @cat.avatar_url%></p>
+	<% end %>
+	<h1>Cat's Name: <%= @cat.name %> </h1>
 	<p>Breed: <%= @cat.breed %></p>
 	<p>Age: <%= @cat.age %></p>
 	<p>Comment: <%= @cat.comment %></p>	
