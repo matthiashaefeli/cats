@@ -1,16 +1,38 @@
-<% if current_user %>
-	<button><%= link_to("Logout", destroy_user_session_path, :method => :delete) %></button>
-	<button><%= link_to("Cats", cats_path) %></button>
-	<button><%= link_to("Messages", messages_path) %></button>
-	<button><%= link_to("Map", map_index_path) %> </button>
-	<button><%= link_to("Home", root_path) %></button>
-	<button><%= link_to("Event", events_path) %></button>
-	<% if !current_user.first_name || current_user.first_name == "" %>
-		<button><%= link_to(current_user.email, usershow_path(current_user.id)) %></button> 
-	<% else %>
-		<button><%= link_to(current_user.first_name, usershow_path(current_user.id)) %></button> 
-	<% end %>
-<% else %>
-	<button><%= link_to("Register", new_user_registration_path) %></button>	
-	<button><%= link_to("Login", new_user_session_path) %></button> 
-<% end %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      	<p>Menu</p>
+<!--         <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> -->
+      </button>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <% if current_user %>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to("Logout", destroy_user_session_path, :method => :delete) %></li>
+        <li><%= link_to("Cats", cats_path) %></li>
+        <li><%= link_to("Messages", messages_path) %></li>
+        <li><%= link_to("Map", map_index_path) %></li>
+        <li><%= link_to("Event", events_path) %></li>
+        <li><%= link_to("Home", root_path) %></li>
+      </ul>
+    </div>
+    <% else %>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to("Register", new_user_registration_path) %></li>
+        <li><%= link_to("Login", new_user_session_path) %></li>
+      </ul>
+    </div>
+    <% end %>
+    <!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+

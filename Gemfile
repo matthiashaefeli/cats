@@ -36,6 +36,9 @@ gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'geocoder'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'autoprefixer-rails'
+gem "font-awesome-rails"
 
 
 group :development, :test do
