@@ -2,6 +2,9 @@
 	<button><%= link_to("Create new Event", new_event_path) %></button>
 </div>
 <div>
+	<button><%= link_to("Back", root_path) %></button>
+</div>
+<div>
 	<h1>you bring your cat</h1>
 	<% current_user.events.each do |event| %>
 		<% careuser = User.find(event.care_user_id) %>
