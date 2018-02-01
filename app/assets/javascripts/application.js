@@ -18,7 +18,9 @@
 //= require_tree .
 
 document.addEventListener('turbolinks:load', function() {
-	$('.audio-play')
-		.get(0)
-		.play();
+	if ($('.audio-play').length > 0) {
+		$('.audio-play')
+			.get(0)
+			.play();
+	}
 });
