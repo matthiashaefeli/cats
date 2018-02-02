@@ -1,3 +1,59 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// welcome page
+
+.welcome {
+	background-color: #ffb300;
+	height: 100vh;
+}
+
+#navbar-transparenttest {
+	background: transparent;
+	border: none;
+}
+
+.house-of-bastet-a {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.welcome-image {
+	margin: auto;
+	width: 50%;
+	height: 50%;
+	padding-top: 8em;
+}
+
+#button-nav {
+	border: none;
+}
+
+// sign up page
+
+.sign-up {
+	margin-top: 0;
+}
+
+.sign-text {
+	color: #fdd835;
+	font-size: 1.5em;
+	margin-top: 1em;
+}
+
+.welcome-image-sign-up {
+	margin: auto;
+	width: 30%;
+	height: 30%;
+}
+
+.background-form {
+	background-color: #fdd835;
+	width: 15em;
+	height: 2.5em;
+}
+
+.sign-button {
+	background-color: transparent;
+}

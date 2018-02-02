@@ -1,0 +1,35 @@
+<div class="welcome sign-up text-center">
+  <%= render 'welcome/navbar' %>
+    <div class="welcome-image-sign-up">
+        <%= image_tag("house-of-bastet-a.png", class: "house-of-bastet-a") %>
+    </div>
+    <div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :email_address, class: "sign-text" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "background-form" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "sign-text" %>
+<!--         <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %> -->
+        <br/>
+        <%= f.password_field :password, autocomplete: "off", class: "background-form" %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :reenter_password, class: "sign-text" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "background-form" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class: "sign-text sign-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
