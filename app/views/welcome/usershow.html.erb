@@ -4,7 +4,13 @@
       <%= image_tag("house-of-bastet-a.png", class: "house-of-bastet-a") %>
   </div>
   <% if current_user.first_name %>
-  missing user data and edit button
+  <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+  <p>Email: <%= current_user.email %> </p>
+  <p>Address: <%= current_user.street %> <%= current_user.zip_code %> <br> <%= current_user.city %> <%= current_user.state %></p>
+  <p>Telephone: <%= current_user.mobile %></p>
+  <p>
+  	<button>Edit data</button>
+  </p>
   <% else %>
 		<div>
 				<%= form_for :user, url: userupdate_path do |f| %>
