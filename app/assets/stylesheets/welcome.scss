@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// welcome page
+// welcome
 
 .welcome {
 	background-color: #ffb300;
@@ -23,14 +23,14 @@
 	margin: auto;
 	width: 50%;
 	height: 50%;
-	padding-top: 8em;
+	padding-top: 4em;
 }
 
 #button-nav {
 	border: none;
 }
 
-// sign up page
+// sign up and login
 
 .sign-up {
 	margin-top: 0;
@@ -56,4 +56,28 @@
 
 .sign-button {
 	background-color: transparent;
+}
+
+// usershow
+
+.userdata-form-text {
+	color: #fdd835;
+	font-size: 0.7em;
+}
+
+.userdata-form {
+	width: 8em;
+}
+
+.userdata-form-short {
+	width: 4em;
+}
+
+.background-color {
+	background-color: #fdd835;
+}
+
+.text-form-user {
+	font-size: 1.5em;
+	color: #fdd835;
 }
