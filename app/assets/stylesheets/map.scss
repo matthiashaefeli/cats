@@ -1,3 +1,17 @@
 // Place all the styles related to the map controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.div-map {
+	padding: 5% 5% 5% 5%;
+}
+
+#map {
+	height: 20%;
+}
+
+.map-home {
+	font-family: 'Monly-Light';
+	background-color: #fdd835;
+	height: 100%;
+}

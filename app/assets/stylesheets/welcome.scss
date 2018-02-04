@@ -2,9 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face {
+	font-family: 'Monly-Light';
+	src: url(Monly-Light.otf) format('truetype');
+}
+
+.check {
+	background-color: #ffb300;
+}
+
+.check2 {
+	background-color: #fdd835;
+}
+
 // welcome
 
 .welcome {
+	font-family: 'Monly-Light';
 	background-color: #ffb300;
 	height: 100vh;
 }
@@ -23,7 +37,7 @@
 	margin: auto;
 	width: 50%;
 	height: 50%;
-	padding-top: 4em;
+	padding-top: 10em;
 }
 
 #button-nav {
@@ -42,10 +56,16 @@
 	margin-top: 1em;
 }
 
+.sign-text2 {
+	color: #fdd835;
+	font-size: 1.5em;
+}
+
 .welcome-image-sign-up {
 	margin: auto;
 	width: 30%;
 	height: 30%;
+	padding-top: 4em;
 }
 
 .background-form {
@@ -59,6 +79,10 @@
 }
 
 // usershow
+
+.form-user-form {
+	padding-top: 4em;
+}
 
 .userdata-form-text {
 	color: #fdd835;

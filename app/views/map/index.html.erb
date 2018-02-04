@@ -4,41 +4,45 @@
         width: 100%;
        }
 </style>
-<h3>Map</h3>
-<div>
-	<button><%= link_to("Back", root_path) %></button>
-</div>
-<div id="map"></div>
-<script>
-  function initMap() {
-  		var lat = <%= current_user.latitude %>
-			var long = <%= current_user.longitude %>
-	  	var home = {lat: lat, lng: long};
-	
-	  var map = new google.maps.Map(document.getElementById('map'), {
-	      zoom: 12,
-	      center: home
-	  });
-	  var marker = new google.maps.Marker({
-	      position: home,
-	      map: map,
-	      label: "Home"
-	  });
-		var userMarkers = <%= raw user_array.to_json %>
-			for (var index = 0; index < userMarkers.length; index++) {
-	  		var markerDirection = {lat: userMarkers[index][0], lng: userMarkers[index][1]};
-	  	  var marker = new google.maps.Marker({
-	      position: markerDirection,
-	      map: map,
-	      label: userMarkers[index][2],
-	      id: '/getcatyes/'+userMarkers[index][3]
-       })
-	  	 google.maps.event.addListener(marker, 'click', function() {
-        window.location.href = this.id;
-    });
-		}
-  }
-</script>
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5FN8DvU3hUKMbcJecUpEbXEKxKZOJhHE&callback=initMap">
-</script>
+<div class="map-home sign-up text-center">
+  <%= render 'welcome/navbar2' %>
+  <div class="welcome-image-sign-up">
+      <%= image_tag("house-of-bastet-n.png", class: "house-of-bastet-a") %>
+  </div>
+	<div class="div-map">
+		<div id="map"></div>
+	</div>
+</div>	
+	<script>
+	  function initMap() {
+	  		var lat = <%= current_user.latitude %>
+				var long = <%= current_user.longitude %>
+		  	var home = {lat: lat, lng: long};
+		
+		  var map = new google.maps.Map(document.getElementById('map'), {
+		      zoom: 12,
+		      center: home
+		  });
+		  var marker = new google.maps.Marker({
+		      position: home,
+		      map: map,
+		      label: "Home"
+		  });
+			var userMarkers = <%= raw user_array.to_json %>
+				for (var index = 0; index < userMarkers.length; index++) {
+		  		var markerDirection = {lat: userMarkers[index][0], lng: userMarkers[index][1]};
+		  	  var marker = new google.maps.Marker({
+		      position: markerDirection,
+		      map: map,
+		      label: userMarkers[index][2],
+		      id: '/getcatyes/'+userMarkers[index][3]
+	       })
+		  	 google.maps.event.addListener(marker, 'click', function() {
+	        window.location.href = this.id;
+	    });
+			}
+	  }
+	</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5FN8DvU3hUKMbcJecUpEbXEKxKZOJhHE&callback=initMap">
+	</script>
