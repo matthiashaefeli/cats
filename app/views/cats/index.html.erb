@@ -1,14 +1,17 @@
-<h1>cats</h1>
-
-<div>
-	<% current_user.cats.each do |cat| %>
-		<p><%= link_to(cat.name, cat_path(cat.id)) %></p> 
-	<% end %>
+<div class="cat-home text-center">
+	<%= render 'welcome/navbar2' %>
+	<div class="welcome-image">
+		<%= image_tag("house-of-bastet-n.png", class: "house-of-bastet-a") %>
+	</div>
+	<div class="form-user-form">
+		<% current_user.cats.each do |cat| %>
+			<p><%= link_to(cat.name, cat_path(cat.id)) %></p> 
+		<% end %>
+	</div>
+	<div>
+		<button><%= link_to("Add Cat", new_cat_path) %></button>
+	</div>
+	<div>
+		<button><%= link_to("Back", root_path) %></button>
+	</div>
 </div>
-<div>
-	<button><%= link_to("Add Cat", new_cat_path) %></button>
-</div>
-<div>
-	<button><%= link_to("Back", root_path) %></button>
-</div>
-

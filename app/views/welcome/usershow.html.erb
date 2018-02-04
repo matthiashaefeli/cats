@@ -1,18 +1,20 @@
-<div class="welcome sign-up text-center">
+<div class="welcome text-center">
   <%= render 'welcome/navbar' %>
   <div class="welcome-image-sign-up">
       <%= image_tag("house-of-bastet-a.png", class: "house-of-bastet-a") %>
   </div>
   <% if current_user.first_name %>
-  <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
-  <p>Email: <%= current_user.email %> </p>
-  <p>Address: <%= current_user.street %> <%= current_user.zip_code %> <br> <%= current_user.city %> <%= current_user.state %></p>
-  <p>Telephone: <%= current_user.mobile %></p>
-  <p>
-  	<button>Edit data</button>
-  </p>
+  <div class="form-user-form">
+	  <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+	  <p>Email: <%= current_user.email %> </p>
+	  <p>Address: <%= current_user.street %> <%= current_user.zip_code %> <br> <%= current_user.city %> <%= current_user.state %></p>
+	  <p>Telephone: <%= current_user.mobile %></p>
+	  <p>
+	  	<button>Edit data</button>
+	  </p>
+	</div>
   <% else %>
-		<div>
+		<div class="form-user-form">
 				<%= form_for :user, url: userupdate_path do |f| %>
 					<p class="text-form-user">
 						Name
@@ -50,7 +52,7 @@
 					  <%= f.text_field :mobile, class: "background-color" %>
 					 </p>
 					<p>
-				    <%= f.submit "Store", class: "sign-text sign-button" %>
+				    <%= f.submit "Store", class: "sign-text2 sign-button" %>
 				  </p>
 			<% end %>
 		</div>
