@@ -21,5 +21,12 @@ module CatsHelper
 		false
 	end
 
+	def eventusercarecat(events)
+		events.each do |event|
+			return true if event.care_user_id == current_user.id
+		end
+		false
+	end
+
 
 end
