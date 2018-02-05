@@ -4,7 +4,7 @@ class CreateCatvotes < ActiveRecord::Migration[5.1]
 
     	t.integer :cat_id
     	t.integer :user_id
-    	t.boolean :goodcat
+    	t.integer :catstars
     	t.string :text
 
       t.timestamps

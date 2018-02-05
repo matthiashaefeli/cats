@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20180130145129) do
   create_table "catvotes", force: :cascade do |t|
     t.integer "cat_id"
     t.integer "user_id"
-    t.boolean "goodcat"
+    t.integer "catstars"
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20180130145129) do
   create_table "uservotes", force: :cascade do |t|
     t.integer "event_id"
     t.integer "user_id"
-    t.boolean "goodevent"
+    t.integer "housestars"
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
