@@ -18,6 +18,7 @@
         <li class="check2"><%= link_to("Logout", destroy_user_session_path, :method => :delete) %></li>
         <li class="check2"><%= link_to("Home", root_path) %></li>
         <li class="check2"><%= link_to("Messages", messages_path) %></li>
+        <li class="check2"><%= link_to("Cats", cats_path) %></li>
         <li class="check2"><%= link_to("Map", map_index_path) %></li>
         <li class="check2"><%= link_to("Event", events_path) %></li>
         <% if !current_user.first_name || current_user.first_name == "" %>

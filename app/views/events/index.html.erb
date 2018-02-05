@@ -1,118 +1,251 @@
-<div>
-	<button><%= link_to("Create new Event", new_event_path) %></button>
-</div>
-<div>
-	<button><%= link_to("Back", root_path) %></button>
-</div>
-<div>
-	<h1>you bring your cat</h1>
-	<% current_user.events.each do |event| %>
-		<% careuser = User.find(event.care_user_id) %>
-		<p>You bring your cat to: <%= link_to(careuser.email, infouser_path(careuser.id)) %>, <%= careuser.first_name %>.<%= careuser.last_name %></p>
-		<p>Cats Name: <%= event.cat.name %></p>
-		<p>Start Date: <%= event.start %></p>
-		<p>End Date: <%= event.end %></p>
-		<% if event.price %>
-			<p>Cost: <%= event.price %>$</p>
-		<% end %>
-		<% if event.confirm_two %>
-			<p>everyting set up</p>
-			<% if !event.uservote %>
-				<p>Vote for the User</p>
-				<%= form_for :uservotes, url: uservotes_path do |f| %>
-				  <p>
-						<%= f.hidden_field :user_id, value: event.care_user_id %>
-						<%= f.hidden_field :event_id, value: event.id %>
-				  </p>
-				  <p>
-				    <%= f.label :text %>
-				    <%= f.text_area :text, size: "30x10" %>
-				  </p>
-				  <p>
-				    <%= f.label :good_place %>
-				    <%= f.check_box :goodevent %>
-				  </p>
-				  <p>
-				    <%= f.submit %>
-				  </p>
+<% if current_user.events.count > 1 %>
+	<div class="map-home text-center">
+	  <%= render 'welcome/navbar2' %>
+	  <div class="welcome-image-sign-up">
+	    <%= image_tag("house-of-bastet-n.png", class: "house-of-bastet-a") %>
+	  </div>
+	  <div class="form-user-form">
+			<button><%= link_to("Create new Event", new_event_path) %></button>
+		</div>
+		<div>
+			<button><%= link_to("Back", root_path) %></button>
+		</div>
+		<div>
+			<h1>you bring your cat</h1>
+			<% current_user.events.each do |event| %>
+				<% careuser = User.find(event.care_user_id) %>
+				<p>You bring your cat to: <%= link_to(careuser.email, infouser_path(careuser.id)) %>, <%= careuser.first_name %>.<%= careuser.last_name %></p>
+				<p>Cats Name: <%= event.cat.name %></p>
+				<p>Start Date: <%= event.start %></p>
+				<p>End Date: <%= event.end %></p>
+				<% if event.price %>
+					<p>Cost: <%= event.price %>$</p>
 				<% end %>
-			<% end %>
-
-		<% elsif event.confirm_one %>
-				<div>
-				  <%= form_for :event, url: event_path(event.id), method: "put" do |f| %>
-				    <p>
-				      <%= f.hidden_field :Confirm_request_two %>
-				    </p>
-				    <p>
-				      <%= f.submit "Confirm Event" %>
-				    </p>
-				  <% end %>
-				</div>
-		<% else %>
-			<p>Wait for confirm from user who will take care of the Cat</p>
-		<% end %>
-		<p><%= link_to('Delete Event', event_path(event.id), method: 'delete') %></p> 
-			<hr>
-	<% end %>
-</div>
-<div>
-	<h1>you recive a cat</h1>
-	<% @events.each do |ev| %>
-		<% if ev.care_user_id == current_user.id %>
-			<p>Cat from: <%= link_to(ev.user.email, infouser_path(ev.user.id)) %></p>
-			<p>Cats Name: <%= ev.cat.name %></p> 
-			<p>Start Date: <%= ev.start %></p>
-			<p>End Date: <%= ev.end %></p>
-			<% if ev.confirm_one %>
-				<p>You confirmed the request</p>
-				<% if ev.confirm_two %>
-					<p>Everything set up</p>
-						<% if ev.catvote %>
-							<p>You voted the cats behavior was: <% if ev.catvote.goodcat %> Good <% else %> Bad <% end %></p>
-							<p>You wrote about the Cat: <%= ev.catvote.text %></p>
-						<% else %>
-							<p>Vote for the Cat</p>
-							<%= form_for :catvotes, url: catvotes_path do |f| %>
-							  <p>
-									<%= f.hidden_field :cat_id, value: ev.cat.id %>
-									<%= f.hidden_field :event_id, value: ev.id %>
-							  </p>
-							  <p>
-							    <%= f.label :text %>
-							    <%= f.text_area :text, size: "30x10" %>
-							  </p>
-							  <p>
-							    <%= f.label :good_behavior_of_the_cat %>
-							    <%= f.check_box :goodcat %>
-							  </p>
-							  <p>
-							    <%= f.submit %>
-							  </p>
-							<% end %>
+				<% if event.confirm_two %>
+					<p>everyting set up</p>
+					<% if !event.uservote %>
+						<p>Vote for the User</p>
+						<%= form_for :uservotes, url: uservotes_path do |f| %>
+						  <p>
+								<%= f.hidden_field :user_id, value: event.care_user_id %>
+								<%= f.hidden_field :event_id, value: event.id %>
+						  </p>
+						  <p>
+						    <%= f.label :text %>
+						    <%= f.text_area :text, size: "30x10" %>
+						  </p>
+						  <p>
+						    <%= f.label :good_place %>
+						    <%= f.check_box :goodevent %>
+						  </p>
+						  <p>
+						    <%= f.submit %>
+						  </p>
 						<% end %>
-				<% else %>
-					<p>Wait to confirm Customer</p>
-				<% end %>
-			<% else %>
-				<div>
-				  <%= form_for :event, url: event_path(ev.id), method: "put" do |f| %>
-				    <p>
-				      <%= f.hidden_field :Confirm_request_one %>
-				    </p>
-						<p>
-				      <%= f.label :price %>
-				      <%= f.number_field :price %>
-				    </p>
-				    <p>
-				      <%= f.submit "Confirm Event" %>
-				    </p>
-				  <% end %>
-				</div>
-			<% end %>
-					<p><%= link_to('Delete Event', event_path(ev.id), method: 'delete') %></p>  
-					<hr>
-		<% end %>
-	<% end %>
+					<% end %>
 
+				<% elsif event.confirm_one %>
+						<div>
+						  <%= form_for :event, url: event_path(event.id), method: "put" do |f| %>
+						    <p>
+						      <%= f.hidden_field :Confirm_request_two %>
+						    </p>
+						    <p>
+						      <%= f.submit "Confirm Event" %>
+						    </p>
+						  <% end %>
+						</div>
+				<% else %>
+					<p>Wait for confirm from user who will take care of the Cat</p>
+				<% end %>
+				<p><%= link_to('Delete Event', event_path(event.id), method: 'delete') %></p> 
+					<hr>
+			<% end %>
+		</div>
+		<div>
+			<h1>you recive a cat</h1>
+			<% @events.each do |ev| %>
+				<% if ev.care_user_id == current_user.id %>
+					<p>Cat from: <%= link_to(ev.user.email, infouser_path(ev.user.id)) %></p>
+					<p>Cats Name: <%= ev.cat.name %></p> 
+					<p>Start Date: <%= ev.start %></p>
+					<p>End Date: <%= ev.end %></p>
+					<% if ev.confirm_one %>
+						<p>You confirmed the request</p>
+						<% if ev.confirm_two %>
+							<p>Everything set up</p>
+								<% if ev.catvote %>
+									<p>You voted the cats behavior was: <% if ev.catvote.goodcat %> Good <% else %> Bad <% end %></p>
+									<p>You wrote about the Cat: <%= ev.catvote.text %></p>
+								<% else %>
+									<p>Vote for the Cat</p>
+									<%= form_for :catvotes, url: catvotes_path do |f| %>
+									  <p>
+											<%= f.hidden_field :cat_id, value: ev.cat.id %>
+											<%= f.hidden_field :event_id, value: ev.id %>
+									  </p>
+									  <p>
+									    <%= f.label :text %>
+									    <%= f.text_area :text, size: "30x10" %>
+									  </p>
+									  <p>
+									    <%= f.label :good_behavior_of_the_cat %>
+									    <%= f.check_box :goodcat %>
+									  </p>
+									  <p>
+									    <%= f.submit %>
+									  </p>
+									<% end %>
+								<% end %>
+						<% else %>
+							<p>Wait to confirm Customer</p>
+						<% end %>
+					<% else %>
+						<div>
+						  <%= form_for :event, url: event_path(ev.id), method: "put" do |f| %>
+						    <p>
+						      <%= f.hidden_field :Confirm_request_one %>
+						    </p>
+								<p>
+						      <%= f.label :price %>
+						      <%= f.number_field :price %>
+						    </p>
+						    <p>
+						      <%= f.submit "Confirm Event" %>
+						    </p>
+						  <% end %>
+						</div>
+					<% end %>
+							<p><%= link_to('Delete Event', event_path(ev.id), method: 'delete') %></p>  
+							<hr>
+				<% end %>
+			<% end %>
+
+		</div>
+	</div>
+<% else %>
+<div class="cat-home text-center">
+  <%= render 'welcome/navbar2' %>
+  <div class="welcome-image-sign-up">
+    <%= image_tag("house-of-bastet-n.png", class: "house-of-bastet-a") %>
+  </div>
+  <div class="form-user-form">
+		<button><%= link_to("Create new Event", new_event_path) %></button>
+	</div>
+	<div>
+		<button><%= link_to("Back", root_path) %></button>
+	</div>
+	<div>
+		<h1>you bring your cat</h1>
+		<% current_user.events.each do |event| %>
+			<% careuser = User.find(event.care_user_id) %>
+			<p>You bring your cat to: <%= link_to(careuser.email, infouser_path(careuser.id)) %>, <%= careuser.first_name %>.<%= careuser.last_name %></p>
+			<p>Cats Name: <%= event.cat.name %></p>
+			<p>Start Date: <%= event.start %></p>
+			<p>End Date: <%= event.end %></p>
+			<% if event.price %>
+				<p>Cost: <%= event.price %>$</p>
+			<% end %>
+			<% if event.confirm_two %>
+				<p>everyting set up</p>
+				<% if !event.uservote %>
+					<p>Vote for the User</p>
+					<%= form_for :uservotes, url: uservotes_path do |f| %>
+					  <p>
+							<%= f.hidden_field :user_id, value: event.care_user_id %>
+							<%= f.hidden_field :event_id, value: event.id %>
+					  </p>
+					  <p>
+					    <%= f.label :text %>
+					    <%= f.text_area :text, size: "30x10" %>
+					  </p>
+					  <p>
+					    <%= f.label :good_place %>
+					    <%= f.check_box :goodevent %>
+					  </p>
+					  <p>
+					    <%= f.submit %>
+					  </p>
+					<% end %>
+				<% end %>
+
+			<% elsif event.confirm_one %>
+					<div>
+					  <%= form_for :event, url: event_path(event.id), method: "put" do |f| %>
+					    <p>
+					      <%= f.hidden_field :Confirm_request_two %>
+					    </p>
+					    <p>
+					      <%= f.submit "Confirm Event" %>
+					    </p>
+					  <% end %>
+					</div>
+			<% else %>
+				<p>Wait for confirm from user who will take care of the Cat</p>
+			<% end %>
+			<p><%= link_to('Delete Event', event_path(event.id), method: 'delete') %></p> 
+				<hr>
+		<% end %>
+	</div>
+	<div>
+		<h1>you recive a cat</h1>
+		<% @events.each do |ev| %>
+			<% if ev.care_user_id == current_user.id %>
+				<p>Cat from: <%= link_to(ev.user.email, infouser_path(ev.user.id)) %></p>
+				<p>Cats Name: <%= ev.cat.name %></p> 
+				<p>Start Date: <%= ev.start %></p>
+				<p>End Date: <%= ev.end %></p>
+				<% if ev.confirm_one %>
+					<p>You confirmed the request</p>
+					<% if ev.confirm_two %>
+						<p>Everything set up</p>
+							<% if ev.catvote %>
+								<p>You voted the cats behavior was: <% if ev.catvote.goodcat %> Good <% else %> Bad <% end %></p>
+								<p>You wrote about the Cat: <%= ev.catvote.text %></p>
+							<% else %>
+								<p>Vote for the Cat</p>
+								<%= form_for :catvotes, url: catvotes_path do |f| %>
+								  <p>
+										<%= f.hidden_field :cat_id, value: ev.cat.id %>
+										<%= f.hidden_field :event_id, value: ev.id %>
+								  </p>
+								  <p>
+								    <%= f.label :text %>
+								    <%= f.text_area :text, size: "30x10" %>
+								  </p>
+								  <p>
+								    <%= f.label :good_behavior_of_the_cat %>
+								    <%= f.check_box :goodcat %>
+								  </p>
+								  <p>
+								    <%= f.submit %>
+								  </p>
+								<% end %>
+							<% end %>
+					<% else %>
+						<p>Wait to confirm Customer</p>
+					<% end %>
+				<% else %>
+					<div>
+					  <%= form_for :event, url: event_path(ev.id), method: "put" do |f| %>
+					    <p>
+					      <%= f.hidden_field :Confirm_request_one %>
+					    </p>
+							<p>
+					      <%= f.label :price %>
+					      <%= f.number_field :price %>
+					    </p>
+					    <p>
+					      <%= f.submit "Confirm Event" %>
+					    </p>
+					  <% end %>
+					</div>
+				<% end %>
+						<p><%= link_to('Delete Event', event_path(ev.id), method: 'delete') %></p>  
+						<hr>
+			<% end %>
+		<% end %>
+
+	</div>
 </div>
+<% end %>

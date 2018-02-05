@@ -1,25 +1,31 @@
-<div>
-	<%= form_for :message, url: messages_path, method: 'post' do |f| %>
+<div class="cat-home text-center">
+	<%= render 'welcome/navbar2' %>
+	<div class="welcome-image-sign-up">
+		<%= image_tag("house-of-bastet-n.png", class: "house-of-bastet-a") %>
+	</div>
+		<div class="form-user-form">
+			<%= form_for :message, url: messages_path, method: 'post' do |f| %>
 
-			<% if @user %>
-			<p>
-				Message to: <%= @user.email %>
-				<%= f.hidden_field :to_id, value: @user.email %>
-			</p>
-			<% else %>
+					<% if @user %>
+					<p>
+						Message to: <%= @user.email %>
+						<%= f.hidden_field :to_id, value: @user.email %>
+					</p>
+					<% else %>
+						<p>
+							Message to: <%= f.select :to_id, allusers %>		
+						</p>
+					<% end %>
 				<p>
-					Message to: <%= f.select :to_id, allusers %>		
+					<%= f.label :text %>
+					<%= f.text_area :text, size: "30x10" %>
 				</p>
+				<p>
+			    <%= f.submit "Send Message" %>
+			  </p>
 			<% end %>
-		<p>
-			<%= f.label :text %>
-			<%= f.text_area :text, size: "30x10" %>
-		</p>
-		<p>
-	    <%= f.submit "Send Message" %>
-	  </p>
-	<% end %>
-</div>
-<div>
-	<button><%= link_to("Back", messages_path) %></button>
-</div>
+		</div>
+		<div>
+			<button><%= link_to("Back", messages_path) %></button>
+		</div>
+	</div>

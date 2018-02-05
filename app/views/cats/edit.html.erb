@@ -1,25 +1,32 @@
-<%= form_for :cat, url: cat_path(@cat.id), method: 'put' do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :breed %>
-    <%= f.text_field :breed %>
-  </p>
-  <p>
-    <%= f.label :age %>
-    <%= f.number_field :age %>
-  </p>
-  <p>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </p>
-  <p>
-    <%= f.label :comment %>
-    <%= f.text_area :comment %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="cat-home text-center">
+  <%= render 'welcome/navbar2' %>
+  <div class="welcome-image-sign-up">
+    <%= image_tag("house-of-bastet-n.png", class: "house-of-bastet-a") %>
+  </div>
+  <div class="form-user-form">
+  <%= form_for :cat, url: cat_path(@cat.id), method: 'put' do |f| %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :breed %>
+      <%= f.text_field :breed %>
+    </p>
+    <p>
+      <%= f.label :age %>
+      <%= f.number_field :age %>
+    </p>
+    <p>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </p>
+    <p>
+      <%= f.label :comment %>
+      <%= f.text_area :comment %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+</div>

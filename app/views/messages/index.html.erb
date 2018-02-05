@@ -1,19 +1,24 @@
-<div>
-	<h1>Messages</h1>
+<div class="cat-home text-center">
+	<%= render 'welcome/navbar2' %>
+	<div class="welcome-image-sign-up">
+		<%= image_tag("house-of-bastet-n.png", class: "house-of-bastet-a") %>
+	</div>
+	<div class="form-user-form">
+		<h1>Messages</h1>
+	</div>
+	<div>
+		<%= link_to("Create new Message", new_message_path) %>
+	</div>
+	<hr>
+	<div>
+		<% @messages.each do |message| %>
+			<p>From: <%= link_to(message.user.email, infouser_path(message.user.id)) %></p>
+			<p>Message: <%= message.text %></p>
+			<p><%= link_to('Delete Message', message_path(message.id), method: 'delete') %></p>
+			<hr>
+		<% end %>
+	</div>
+	<div>
+		<button><%= link_to("Back", root_path) %></button>
+	</div>
 </div>
-<div>
-	<%= link_to("Create new Message", new_message_path) %>
-</div>
-<hr>
-<div>
-	<% @messages.each do |message| %>
-		<p>From: <%= link_to(message.user.email, infouser_path(message.user.id)) %></p>
-		<p>Message: <%= message.text %></p>
-		<p><%= link_to('Delete Message', message_path(message.id), method: 'delete') %></p>
-		<hr>
-	<% end %>
-</div>
-<div>
-	<button><%= link_to("Back", root_path) %></button>
-</div>
-
