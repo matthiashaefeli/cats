@@ -1,4 +1,4 @@
-<div class="cat-home text-center">
+<div class="map-home text-center">
 	<%= render 'welcome/navbar2' %>
 	<div class="welcome-image-sign-up">
 		<%= image_tag("house-of-bastet-n.png", class: "house-of-bastet-a") %>
@@ -8,7 +8,10 @@
 			<p><%= image_tag @cat.avatar_url, class: "avatar-cat" %></p>
 		<% end %>
 		<h1><%= @cat.name %> </h1>
-		<p>Breed: <%= @cat.breed %></p>
+		<% stars(@cat.name).times do %>
+			<%= image_tag("pata.png", class: "pata") %>
+		<% end %>
+ 		<!-- <p>Breed: <%= @cat.breed %></p> -->
 		<!-- <p>Age: <%= @cat.age %></p> -->
 		<p><%= @cat.comment %></p>	
 	</div>
@@ -16,11 +19,10 @@
 		<button><%= link_to("edit cat", edit_cat_path(@cat.id)) %></button> 
 		<button><%= link_to("delete cat", cat_path(@cat.id), method: "delete") %></button>
 	</div>
-<!-- 	<div>
-		<h1>All comments about <%= @cat.name %></h1>
-		<p>The Cat has <%= @cat.catvotes.where(goodcat: false).count %> bad and <%= @cat.catvotes.where(goodcat: true).count %> good behavior</p> 
+	<div>
+		<h1>Comments</h1>
 		<% @cat.catvotes.each do |catvote| %>
 			<p>Comment from <%= catvote.user.email %>, <%= catvote.user.first_name %>, <%= catvote.user.last_name %>: <%= catvote.text %></p>
 		<% end %>
-	</div> -->
+	</div>
 </div>

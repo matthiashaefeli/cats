@@ -4,7 +4,7 @@ class CreateUservotes < ActiveRecord::Migration[5.1]
 
     	t.integer :event_id
     	t.integer :user_id
-    	t.boolean :goodevent
+    	t.integer :housestars
     	t.string :text
 
       t.timestamps
